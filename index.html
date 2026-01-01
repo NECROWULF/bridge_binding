@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge Bidding Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        input, select {
+            margin-left: 10px;
+        }
+
+        .able {
+            color: green;
+        }
+
+        .unable{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-container"></div>
+    
+    <label>N: <input type="text" id="Nname" value="Кирилл"></label>
+    <label>S: <input type="text" id="Sname" value="Матвей"></label>
+    <label>E: <input type="text" id="Ename" value="Гондон"></label>
+    <label>W: <input type="text" id="Wname" value="Пидорас"></label><br>
+    <label>враги всегда пасуют <input type="checkbox" id="autopass" checked></label><br>
+    <label>Dealer: 
+        <select id="selectdealer">
+            <option value="N">N</option>
+            <option value="S">S</option>
+            <option value="E">E</option>
+            <option value="W">W</option>
+        </select>
+    </label>
+    <script src="code.js"></script>
+</body>
+</html>
