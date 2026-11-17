@@ -1,1 +1,397 @@
+\documentclass[a4paper,10pt]{article}
 
+% Настройка шрифтов и языка (для XeLaTeX)
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\setmainfont{Liberation Serif} % Или другой шрифт с поддержкой кириллицы
+\usepackage[russian]{babel}
+
+% Пакеты для оформления
+\usepackage[margin=1.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\usepackage{needspace}
+
+
+% Определение цветов
+\definecolor{sputnikBlue}{RGB}{31, 73, 125}
+\definecolor{sputnikRed}{RGB}{192, 0, 0}
+\definecolor{tableHeader}{RGB}{54, 95, 145}
+
+%для гиперссылок
+\usepackage[colorlinks=true, linkcolor=sputnikBlue, urlcolor=sputnikBlue]{hyperref}
+
+% Настройка заголовков
+\titleformat{\section}{\color{sputnikBlue}\normalfont\Large\bfseries}{}{0pt}{\thesection. }
+\titleformat{\subsection}{\color{sputnikBlue}\normalfont\large\bfseries}{}{0pt}{\thesubsection\ }
+
+% Команды для мастей
+\newcommand{\clb}{\textcolor{black}{♣}}
+\newcommand{\dia}{\textcolor{red}{♦}}
+\newcommand{\hrt}{\textcolor{red}{♥}}
+\newcommand{\spd}{\textcolor{black}{♠}}
+
+\newcommand{\NT}{БК}
+
+\begin{document}
+
+% Шапка документа
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, noitemsep]
+    \item \textbf{Баланс на гейм} – 24+ очка. Геймовые контракты – 3\NT, 4\hrt/\spd, 5\clb/\dia. Минорный гейм играем на 9-картном фите 
+    \item \textbf{Фит} – наличие на одной линии 8+ карт в какой-либо масти.
+    \item \textbf{Открытие мастью на 1 уровне} обещает от 12 очков. С 6+ очками в ответ НЕ ПАСУЕМ.
+    \item \textbf{Вход мастью} – 8-15 очков 5+ карт на первом уровне, 10-15 очков 5+ карт на втором уровне без скачка, или по правилам блоков (можно со скачком). входы на 3+ уровне как чувствуем или тоже по правилам блоков
+    \item \textbf{Вход 1\NT(2\NT после блока оппонентов)} – 16-19 очков (можно и с 15), равномерная рука, есть держка в масти оппонента.
+\end{itemize}
+
+\section{Спектр открытий}
+\begin{itemize}[label=\textcolor{sputnikRed}{\textbullet}, leftmargin=*, noitemsep]
+    \item \textcolor{sputnikRed}{Выбранное открытие отрицает все остальные открытия.} % Матвей: ну с этим я бы поспорил, но да ладно
+    \item \textcolor{sputnikRed}{Выбранное открытие в масти отрицает 5-картную масть старше.}
+\end{itemize}
+
+\noindent
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Открытие}} & \textcolor{white}{\textbf{Очков}} & \textcolor{white}{\textbf{Значение}} \\ \hline
+1\clb & 12-21 & 2+\clb\ , нет 5 карт в \hrt/\spd\, нет 4 карт в \dia/ : \\
+      &       & Равномерный расклад только при 12-14 и 18-19 очках. \\ \hline
+1\dia & 12-21 & 4+\dia, нет 5 карт в \hrt/\spd\ : \\
+      &       & Равномерный расклад только при 12-14 или 18-19 очках. \\ \hline
+1\hrt & 12-21 & 5+\hrt, нет 5 карт в \spd \\ \hline
+1\spd & 12-21 & 5+\spd \\ \hline
+1\NT  & 15-17 & Расклад 5332 / 4333 / 4432, нет 5 карт в \hrt/\spd \\ \hline
+2\clb & 22+ (либо 9 взяток с руки)  & Любой расклад, ФГ \\ \hline
+2\dia/\hrt/\spd & 5-10 & 6 карт в масти открытия, не менее половины очков в масти \\ \hline
+2\NT  & 20-21 & Расклад 5332 / 4333 / 4432, нет 5 карт в \hrt/\spd \\ \hline
+3\clb & 5-9 & 7\clb, почти все очки в \clb ИЛИ очень хорошие 6\clb \\ \hline
+3\dia/\hrt/\spd & 5-9 & 7 карт в масти открытия, почти все очки в масти \\ \hline
+4\clb/\dia/\hrt/\spd & 5-9 & 8 карт в масти открытия, почти все очки в масти \\ \hline
+\end{tabularx}
+
+\section{Ответы на открытие 1\clb}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Ответ открывающегося}} \\ \hline
+1\dia\ = 6+ очков, 4+\hrt, нет 5\spd, Ф1. & \begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 1\hrt = 12+, ровно 3 карты в \hrt
+    \item 2\hrt = 12-14, ровно 4 карты в \hrt
+    \item 3\hrt = 15-17, ровно 4 карты в \hrt
+    \item 4\hrt = 18-21, ровно 4 карты в \hrt
+    \item 1\spd = 12+, ровно 4 карты в \spd, нет 3 карт в \hrt
+    \item 2\clb = 6+ карт, 12-14, нет 3 карт в \hrt и 4 карт в \spd
+    \item 3\clb = 6+ карт, 15-17, нет 3 карт в \hrt и 4 карт в \spd
+    \item 1\NT = любой другой расклад, в том числе 18+ очков (\hyperlink{sec:double-checkback}{!задаем двойной чекбек!})
+\end{itemize} \\ \hline
+1\hrt\ = 6+ очков, 4+\spd, Ф1. & \begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 1\spd = 12+, ровно 3 карты в \spd
+    \item 2\spd = 12-14, ровно 4 карты в \spd
+    \item 3\spd = 15-17, ровно 4 карты в \spd
+    \item 4\spd = 18+, ровно 4 карты в \spd
+    \item 2\clb = 6+ карт, 12-14, нет 3 карт в \spd
+    \item 3\clb = 6+ карт, 15-17, нет 3 карт в \spd
+    \item 1\NT = любой другой расклад, в том числе 18+ очков (\hyperlink{sec:double-checkback}{!задаем двойной чекбек!})
+\end{itemize} \\ \hline
+1\NT\ = 6-9 очков, нет 4 карт в \hrt/\spd, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\clb = 6+ карт, 12-14
+    \item 2\clb = 6+ карт, 15-17
+    \item 2\NT = инвит в 3бк
+    \item 3\NT = контракт который хотим играть
+\end{itemize} \\ \hline
+2\NT\ = 10-11 очков, нет 4 карт в \hrt/\spd, инвит в 3\NT, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 3\NT = инвит принят
+    \item пас = инвит не принят
+\end{itemize} \\ \hline
+3\NT\ = 12 очков, нет 4 карт в \hrt/\spd, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item пас
+\end{itemize} \\ \hline
+
+\end{tabularx}
+
+\section{Ответы на открытие 1\dia}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Ответ открывающегося}} \\ \hline
+1\hrt\ = 6+ очков, 4+\hrt, нет 5\spd, Ф1. & \begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\hrt = 12-14, ровно 4 карты в \hrt
+    \item 3\hrt = 15-17, ровно 4 карты в \hrt
+    \item 4\hrt = 18-21, ровно 4 карты в \hrt
+    \item 1\spd = 12+, ровно 4 карты в \spd, нет 4 карт в \hrt
+    \item 2\clb = 5-4 \clb\dia/\dia\clb, 12-14, нет 4 карт в \hrt/\spd
+    \item 3\clb = 5-4 \clb\dia/\dia\clb, 15-17, нет 4 карт в \hrt/\spd
+    \item 2\dia = 6+ \dia, 12-14, нет 4 карт в \hrt/\spd
+    \item 3\dia = 6+ \dia, 15-17, нет 4 карт в \hrt/\spd
+    \item 1\NT = любой другой расклад, в том числе 18+ очков (\hyperlink{sec:double-checkback}{!задаем двойной чекбек!})
+\end{itemize} \\ \hline
+
+1\spd\ = 6+ очков, 4+\spd, Ф1. & \begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\spd = 12-14, ровно 4 карты в \spd
+    \item 3\spd = 15-17, ровно 4 карты в \spd
+    \item 4\spd = 18+, ровно 4 карты в \spd
+    \item 2\dia = 6+ \dia, 12-14, нет 4 карт в \spd
+    \item 3\dia = 6+ \dia, 15-17, нет 4 карт в \spd
+    \item 2\clb = 5-4 \clb\dia/\dia\clb, 12-14, нет 4 карт в \hrt/\spd
+    \item 3\clb = 5-4 \clb\dia/\dia\clb, 15-17, нет 4 карт в \hrt/\spd
+    \item 1\NT = любой другой расклад, в том числе 18+ очков (\hyperlink{sec:double-checkback}{!задаем двойной чекбек!})
+\end{itemize} \\ \hline
+1\NT\ = 6-9 очков, нет 4 карт в \hrt/\spd, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\dia = 6+ \dia, 12-14
+    \item 2\dia = 6+ \dia, 15-17
+    \item 2\clb = 5-4 \clb\dia/\dia\clb, 12-14, нет 4 карт в \hrt/\spd
+    \item 3\clb = 5-4 \clb\dia/\dia\clb, 15-17, нет 4 карт в \hrt/\spd
+    \item 2\NT = инвит в 3бк
+    \item 3\NT = контракт который хотим играть
+\end{itemize} \\ \hline
+2\NT\ = 10-11 очков, нет 4 карт в \hrt/\spd, инвит в 3\NT, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 3\NT = инвит принят
+    \item пас = инвит не принят
+\end{itemize} \\ \hline
+3\NT\ = 12 очков, нет 4 карт в \hrt/\spd, НФ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item пас
+\end{itemize} \\ \hline
+
+\end{tabularx}
+
+\section{Ответы на открытие 1\hrt\ (на 1\spd\ аналогично)}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Открывающий}} & \textcolor{white}{\textbf{Отвечающий}} \\ \hline
+1\spd\ на 1\hrt\ = 6+ очков, 4+\spd, Ф1 & Фит 2/3/4 ур., 1\NT, повтор \hrt, 2\clb/\dia\ (5+\hrt\ и 4+\clb/\dia) & \\ \hline
+2\hrt\ на 1\hrt\ =6-9 очков, ровно 3 карты в\hrt & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item ПАС=12-14
+    \item 3\hrt\ =15-17
+    \item 4\hrt\ =18+
+\end{itemize} & \\ \hline
+1\NT\ = 6-11 очков без фита ИЛИ 10-11 очков с ровно 3 картами в \hrt\ , нет 4\spd, Ф1 & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\NT = 15-17 очков, 5 карт в \hrt
+    \item 3\NT = 18+ очков, 5 карт в \hrt
+    \item 2\dia = 12-14 очков, 5 карт в \hrt, 4 карты в \dia
+    \item 2\clb = \textbf{12-14 очков, 5 карт в \hrt}
+    \item 2\hrt = 12-14 очков, 6+ карт в \hrt
+    \item 3\hrt = 15+ очков, 6+ карт в \hrt
+\end{itemize} &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Масть на ур.2 =слабая рука, 6 карт
+    \item Масть на ур.3 =инвитная рука, 6 карт
+    \item 2\NT = натур.инвит
+    \item 3\NT =гейм.рука 4-3-3-3 (с фитом, контракт на выбор)
+    \item 2\hrt = дуплет, к игре
+    \item 3\hrt = 10-11 очков с 3-картным фитом
+\end{itemize} \\ \hline 
+2\clb\ =12+ очков, равномер/фит в мажоре/ 5+ \clb\ , нет 5 карт в \dia/\hrt , ФГ &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Повтор мажора открытия=6 карт
+    \item Новая масть= 4+ карт
+    \item 2\NT = расклад 5332
+\end{itemize}
+& \\ \hline
+2\dia\ =12+ очков,5+ \dia, ФГ & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Повтор мажора открытия=6 карт
+    \item Новая масть= 4+ карт
+    \item 2\NT = расклад 5332
+\end{itemize}
+& \\ \hline
+2\hrt на 1\spd =12+ очков,5+ \hrt , ФГ & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Фит 3+ карты
+    \item Повтор масти открытия=6+ карт
+    \item Новая масть= 4+ карт
+    \item 2\NT = расклад 5332
+\end{itemize} & \\ \hline
+2\spd\ на 1\hrt =12+ очков, 6+ \spd , ФГ & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Фит 2+ карты
+    \item Повтор масти открытия=6+ карт
+    \item Новая масть= 4+ карт
+\end{itemize}& \\ \hline
+2\NT\ = 10-11 очков с 4-картным фитом или фитом с двумя фигурами &  & \\ \hline
+3\hrt\ =блокируещего характера с 4-картным фитом &  & \\ \hline
+\end{tabularx}
+
+\section{Ответы на открытие 1\NT}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Открывающий}} & \textcolor{white}{\textbf{Отвечающий}} \\ \hline
+2\clb\ (\textbf{Стейман}) = 0+ очков (но надо четко знать что делать на каждый вариант событий), есть мажорная четверка & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\dia = нет мажорных 4-ок
+    \item 2\hrt = 4 карты в \hrt, могут быть 4 карты в \spd
+    \item 2\spd = 4 карты в \spd , нет 4 карт в \hrt
+\end{itemize}&
+НА ОТВЕТ 2\dia, если 4-5 или 5-5 в мажорах:
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\hrt= слабая рука с 5-5, открывающий выбирает козырь
+    \item 2\spd = инвитная рука с 5-картной \spd----при 5-5, если теперь открывающий поставил 2\NT, ставим 3\hrt
+    \item 3\spd = геймовая рука с 5-картной \spd----при 5-5, если теперь открывающий поставил 3\NT, ставим 4\hrt
+\end{itemize}
+\\ \hline
+2\dia\ (\textbf{трансфер в \hrt}) = 0+ очков, 5+\hrt & 2\hrt\ (ОБЯЗАТЕЛЬНЫЙ ПРИЕМ) &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Пас=0-6 очков
+    \item 2\spd = инвит, 5 черв и 4 пик
+    \item 3\spd = гейм, 5 черв и 4 пик
+    \item 3 \hrt = 6+ карт, 7-8 очков
+    \item 4 \hrt = 6+ карт, 9+ очков
+    \item Новая масть=4+ карт, 10+ очков, Фг (Открывающий после ставит 4\hrt, если фит был, или торговля дальше)
+    \item 2\NT = расклад 5332, 8-9 очков (C 17 очками Открывающий после ставит 4\hrt, если фит был, или 3\NT, если нет)
+    \item 3\NT = расклад 5332, 10+ очков, Гейм (Открывающий после переставит в 4\hrt, если фит был)
+\end{itemize}\\ \hline
+2\hrt\ (\textbf{трансфер в \spd}) = 0+ очков, 5+\spd & 2\spd\ (ОБЯЗАТЕЛЬНЫЙ ПРИЕМ) & Аналогично трансферу в \hrt \\ \hline
+2\spd\ (\textbf{трансфер в \clb}) = 0+ очков (См.далее), 6+\clb & 3\clb\ (ОБЯЗАТЕЛЬНЫЙ ПРИЕМ) & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Пас=слабая рука
+    \item ФГ=еще заявка
+\end{itemize}
+\\ \hline
+3\clb\ (\textbf{трансфер в \dia}) = 0+ очков (См.далее), 6+\dia & 3\dia\ (ОБЯЗАТЕЛЬНЫЙ ПРИЕМ) & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item Пас=слабая рука
+    \item ФГ=еще заявка
+\end{itemize}
+\\ \hline
+2\NT\ = 8-9 очков, инвит к 3\NT & 3\NT\ с максимумом, иначе ПАС & \\ \hline
+4\clb\ = 15+ очков, вопрос о количестве тузов & 
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 4\dia = 1 туз
+    \item 4\hrt = 2 туза
+    \item 4\spd = 3 туза
+    \item 4\NT = 0 или 4 туза
+\end{itemize} & \\ \hline
+\end{tabularx}
+
+\section{Ответы на открытие 2\clb\ Форсинг гейм}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Открывающий}} \\ \hline
+2\dia\ = 0--8, любая рука &
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\NT\ равномер, далее торговля как после открытия 2БК (стейман, трансферы)
+    \item 2\hrt/\spd/\dia/\clb\ при 5+
+\end{itemize} \\ \hline
+2\hrt/\spd\ = 9+ очков, 5+ \hrt/\spd & Согласование масти или 2\NT/3\NT \\ \hline
+2\NT\ = 9+ очков, нет 5 в \hrt/\spd & Согласование масти или 2\NT/3\NT \\ \hline
+3\clb/\dia\ = 9+ очков, 5+ \clb/\dia & Согласование масти или 2\NT/3\NT \\ \hline
+\end{tabularx}
+
+\section{Двойной чекбек}
+\hypertarget{sec:double-checkback}{}
+\subsection{Определение чекбэковой позиции, важные моменты}
+\textbf{Чекбэковая позиция-позиция, в которой были сделаны нами 3 заявки на уровне 1.}
+\subsection{Конвенция}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor{tableHeader} \textcolor{white}{\textbf{Отвечающий}} & \textcolor{white}{\textbf{Открывающий}} \\ \hline
+2\clb=просьба сказать 2\dia:
+
+1)Намерение играть 2\dia
+
+2)=сила инвита&
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, leftmargin=*, nosep]
+    \item 2\dia=принятие. !ДАЛЕЕ ЕСЛИ У ОТВЕЧАЮЩЕГО СЛУЧАЙ 2, то на 2\dia делаем натуральную заявку!
+    \item натуральная иная заявка=много очков, нельзя останавливаться в 2\dia.
+\end{itemize} \\ \hline
+2\dia = произвольный ФГ & Натурально \\ \hline
+2\hrt/\spd/ = слабая рука, натурально & ... \\ \hline
+2\NT = просьба сказать 3\clb:
+
+1)слабая рука с \clb
+
+2)шлемовая рука с \clb & 3\clb, 
+
+!ОТВЕЧАЮЩИЙ ПРОДОЛЖАЕТ ТОРГОВЛЮ со ШЛЕМОВОЙ рукой!\\ \hline
+ВЫШЕ 2\NT=натурально, шлемовая рука, резкий расклад& ... \\ \hline
+\end{tabularx}
+
+
+
+\section{Ответы на открытие блоком}
+\textbf{7. Ответы на 2\dia/2\hrt/2\spd}
+\begin{itemize}[noitemsep]
+    \item Фит на 3 уровне = 3+ карты, заграждение (НЕ ИНВИТ).
+    \item Новая масть = 5+ карт, ФГ.
+    \item 2\NT\ = ИНВИТ+ (запрос силы и концентрации).
+\end{itemize}
+
+\section{Важные штуки, перенести потом}
+-октрытие--(вход)--\textbf{контра===инвит или ФГ без держки и фита, произвольный}
+
+-открытие--(контра)--\textbf{реконтра===ОТ 10 очков}
+
+-открытие--(вход)--\textbf{масть оппонента===ФГ с держкой или пониманием, что будет козырь}
+
+
+-трансефры не сохраняются после перекрытия, НО
+
+-(открытие)--1/2 БК--(пас)--\textbf{...сохранение торговли как после октрытие 1/2 бк}
+
+
+-(1 минор)--контра--(пас)--\textbf{повтор минора===инвит+ без мажорных четверок}
+
+-пас--(откртыие)--пас--(???)--\textbf{контра=== 10-11 очков, 4 карты во всех мастях}
+\section{Конкурентная торговля (на открытия оппонентов)}
+\subsection{Оппонент открылся на 1 ур., наш вход}
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, noitemsep]
+    \item 1\NT\ = 15-19 очков равномера с держкой.
+    \item Масть без прыжка = (от 8 на первом уровне) 12-15 очков, 5+ карт.
+    \item Масть с прыжком=слабая рука, блок.
+    \item Контра =
+    
+     12-14 с равномером
+    
+    /15-17 очков равномера БЕЗ ДЕРЖКИ
+    
+    /16+очков с длинной мастью
+    
+    /18+ очков с равномером.
+\end{itemize}
+
+\subsection{Оппонент открылся блоком (2/3), наш вход}
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, noitemsep]
+    \item Масть = 12-17 очков, 5+ карт.
+    \item Контра = 12+ очков (силовая/вызывающая).
+    \item 2\NT/3\NT\ = 16-18 очков, задержка.
+\end{itemize}
+
+\section{Конкурентная торговля (на входы оппонентов)}
+\subsection{Партнер открылся на 1, оппонент вошел}
+\begin{itemize}[label=\textcolor{sputnikRed}{\tiny\(\blacksquare\)}, noitemsep]
+    \item
+\end{itemize}
+
+\section{Вист}
+\subsection{Первые ходы}
+\begin{itemize}[noitemsep]
+    \item Из двух карт: всегда старшая (\textbf{К}В, \textbf{Д}х, \textbf{8}2).
+    \item Из ряда фигур: старшая (\textbf{Т}Кх, \textbf{К}Дх, \textbf{Д}Вх).
+    \item Есть фигура (не подряд): 4-я сверху (\textbf{Т}76\textbf{3}, \textbf{К}В4\textbf{3}).
+    \item Нет фигуры: 2-я сверху (\textbf{9}765, \textbf{10}73).
+\end{itemize}
+\subsection{Сигналы}
+\begin{itemize}[noitemsep]
+    \item \textbf{Маленькая} – поощрение (есть сила).
+    \item \textbf{Старшая} (не фигура) – отказ.
+    \item Снос фигуры обещает фигуру на 1 ранг ниже.
+\end{itemize}
+
+\end{document}
